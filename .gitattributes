@@ -1,6 +1,6 @@
 database_OFv24/* linguist-vendored
 grids/* linguist-vendored
 inputs/* linguist-vendored
-run_chatcfd/* linguist-vendored
+run_chatcfd/** linguist-vendored
 temp/* linguist-vendored
 test_env/* linguist-vendored
