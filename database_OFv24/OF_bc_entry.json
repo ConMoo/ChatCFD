@@ -1,0 +1,449 @@
+{
+    "overset": [
+        "value"
+    ],
+    "fixedValue": [
+        "value"
+    ],
+    "movingWallVelocity": [
+        "value"
+    ],
+    "inletOutlet": [
+        "inletValue",
+        "value"
+    ],
+    "symmetryPlane": [
+        "value"
+    ],
+    "uniformFixedValue": [
+        "uniformValue"
+    ],
+    "cyclicAMI": [
+        "value"
+    ],
+    "mappedField": [
+        "offset",
+        "refGradient",
+        "refValue",
+        "sampleMode",
+        "samplePatch",
+        "sampleRegion",
+        "sampleWorld",
+        "value",
+        "valueFraction"
+    ],
+    "calculated": [
+        "value"
+    ],
+    "waveTransmissive": [
+        "fieldInf",
+        "gamma",
+        "lInf",
+        "psi",
+        "value",
+        "field"
+    ],
+    "compressible::alphatWallFunction": [
+        "value",
+        "Prt"
+    ],
+    "supersonicFreestream": [
+        "TInf",
+        "UInf",
+        "gamma",
+        "pInf",
+        "value"
+    ],
+    "epsilonWallFunction": [
+        "value"
+    ],
+    "kqRWallFunction": [
+        "value"
+    ],
+    "nutkWallFunction": [
+        "value"
+    ],
+    "slip": [
+        "value"
+    ],
+    "turbulentIntensityKineticEnergyInlet": [
+        "intensity",
+        "value"
+    ],
+    "turbulentMixingLengthDissipationRateInlet": [
+        "mixingLength",
+        "value"
+    ],
+    "flowRateInletVelocity": [
+        "massFlowRate",
+        "value"
+    ],
+    "freestreamPressure": [
+        "freestreamValue"
+    ],
+    "omegaWallFunction": [
+        "value"
+    ],
+    "freestreamVelocity": [
+        "freestreamValue"
+    ],
+    "pressureInletOutletVelocity": [
+        "value"
+    ],
+    "nutUWallFunction": [
+        "value"
+    ],
+    "totalPressure": [
+        "p0"
+    ],
+    "turbulentInlet": [
+        "fluctuationScale",
+        "referenceField",
+        "value"
+    ],
+    "fixedMean": [
+        "meanValue",
+        "value"
+    ],
+    "plenumPressure": [
+        "R",
+        "gamma",
+        "inletAreaRatio",
+        "inletDischargeCoefficient",
+        "plenumDensity",
+        "plenumTemperature",
+        "plenumVolume",
+        "supplyMassFlowRate",
+        "supplyTotalTemperature",
+        "timeScale",
+        "value"
+    ],
+    "pressureInletVelocity": [
+        "value"
+    ],
+    "fluxCorrectedVelocity": [
+        "value"
+    ],
+    "mixed": [
+        "refGradient",
+        "refValue",
+        "value",
+        "valueFraction"
+    ],
+    "uniformTotalPressure": [
+        "p0"
+    ],
+    "outletMappedUniformInletHeatAddition": [
+        "Q",
+        "TMax",
+        "TMin",
+        "outletPatch",
+        "value"
+    ],
+    "clampedPlate": [
+        "value"
+    ],
+    "nutUSpaldingWallFunction": [
+        "value"
+    ],
+    "compressible::turbulentTemperatureTwoPhaseRadCoupledMixed": [
+        "Tnbr",
+        "kappaMethod",
+        "otherPhase",
+        "qr",
+        "qrNbr",
+        "region",
+        "value"
+    ],
+    "copiedFixedValue": [
+        "sourceFieldName",
+        "value"
+    ],
+    "prghTotalPressure": [
+        "p0",
+        "value"
+    ],
+    "fixedFluxPressure": [
+        "value"
+    ],
+    "lumpedMassWallTemperature": [
+        "Cp",
+        "kappa",
+        "kappaMethod",
+        "mass",
+        "value"
+    ],
+    "greyDiffusiveRadiation": [
+        "value"
+    ],
+    "compressible::turbulentTemperatureRadCoupledMixed": [
+        "Tnbr",
+        "kappaMethod",
+        "value",
+        "qr",
+        "qrNbr",
+        "kappa"
+    ],
+    "externalWallHeatFluxTemperature": [
+        "kappaMethod",
+        "mode",
+        "value",
+        "Ta",
+        "q",
+        "kappaName"
+    ],
+    "fixedGradient": [
+        "gradient"
+    ],
+    "humidityTemperatureCoupledMixed": [
+        "kappa",
+        "kappaMethod",
+        "value"
+    ],
+    "wideBandDiffusiveRadiation": [
+        "value"
+    ],
+    "greyDiffusiveRadiationViewFactor": [
+        "qro",
+        "value"
+    ],
+    "alphatJayatillekeWallFunction": [
+        "Prt",
+        "value"
+    ],
+    "processor": [
+        "value"
+    ],
+    "compressible::thermalBaffle": [
+        "kappaMethod",
+        "value"
+    ],
+    "compressible::alphatJayatillekeWallFunction": [
+        "Prt",
+        "value"
+    ],
+    "prghPressure": [
+        "p",
+        "value"
+    ],
+    "MarshakRadiation": [
+        "value"
+    ],
+    "surfaceNormalFixedValue": [
+        "refValue",
+        "value"
+    ],
+    "turbulentMixingLengthFrequencyInlet": [
+        "mixingLength",
+        "value",
+        "k"
+    ],
+    "interstitialInletVelocity": [
+        "alpha",
+        "inletVelocity",
+        "value"
+    ],
+    "JohnsonJacksonParticleSlip": [
+        "muF",
+        "restitutionCoefficient",
+        "sigma",
+        "specularityCoefficient",
+        "value"
+    ],
+    "JohnsonJacksonParticleTheta": [
+        "muF",
+        "restitutionCoefficient",
+        "sigma",
+        "specularityCoefficient",
+        "value"
+    ],
+    "mapped": [
+        "average",
+        "interpolationScheme",
+        "setAverage",
+        "value",
+        "field"
+    ],
+    "fixedMultiPhaseHeatFlux": [
+        "phase",
+        "q",
+        "relax",
+        "value"
+    ],
+    "alphaContactAngle": [
+        "thetaProperties",
+        "value"
+    ],
+    "permeableAlphaPressureInletOutletVelocity": [
+        "alpha",
+        "alphaMin",
+        "value"
+    ],
+    "prghPermeableAlphaTotalPressure": [
+        "alpha",
+        "alphaMin",
+        "p",
+        "value"
+    ],
+    "nutkRoughWallFunction": [
+        "Cs",
+        "Ks",
+        "value"
+    ],
+    "constantAlphaContactAngle": [
+        "limit",
+        "theta0",
+        "value"
+    ],
+    "waveAlpha": [
+        "value"
+    ],
+    "waveVelocity": [
+        "value"
+    ],
+    "variableHeightFlowRate": [
+        "lowerBound",
+        "upperBound",
+        "value"
+    ],
+    "outletPhaseMeanVelocity": [
+        "Umean",
+        "alpha",
+        "value"
+    ],
+    "variableHeightFlowRateInletVelocity": [
+        "alpha",
+        "flowRate",
+        "value"
+    ],
+    "rotatingWallVelocity": [
+        "axis",
+        "omega",
+        "origin"
+    ],
+    "cyclic": [
+        "value"
+    ],
+    "porousBafflePressure": [
+        "D",
+        "I",
+        "jump",
+        "length",
+        "patchType",
+        "uniformJump",
+        "value"
+    ],
+    "translatingWallVelocity": [
+        "U",
+        "value"
+    ],
+    "multiphaseEuler::alphaContactAngle": [
+        "thetaProperties",
+        "value"
+    ],
+    "pressureInletOutletParSlipVelocity": [
+        "value"
+    ],
+    "waveSurfacePressure": [
+        "value"
+    ],
+    "flowRateOutletVelocity": [
+        "volumetricFlowRate"
+    ],
+    "timeVaryingMassSorption": [
+        "kabs",
+        "max",
+        "value"
+    ],
+    "adjointOutletPressure": [
+        "value"
+    ],
+    "adjointOutletVelocity": [
+        "value"
+    ],
+    "SRFVelocity": [
+        "inletValue",
+        "relative",
+        "value"
+    ],
+    "adjointFarFieldPressure": [
+        "value"
+    ],
+    "adjointInletVelocity": [
+        "value"
+    ],
+    "adjointWallVelocity": [
+        "value"
+    ],
+    "adjointInletNuaTilda": [
+        "value"
+    ],
+    "adjointOutletNuaTilda": [
+        "value"
+    ],
+    "nutLowReWallFunction": [
+        "value"
+    ],
+    "outletInlet": [
+        "outletValue",
+        "value"
+    ],
+    "freestream": [
+        "freestreamValue"
+    ],
+    "adjointFarFieldVelocity": [
+        "value"
+    ],
+    "adjointFarFieldNuaTilda": [
+        "value"
+    ],
+    "waWallFunction": [
+        "value"
+    ],
+    "adjointZeroInlet": [
+        "value"
+    ],
+    "adjointOutletWa": [
+        "value"
+    ],
+    "kaqRWallFunction": [
+        "value"
+    ],
+    "adjointOutletKa": [
+        "value"
+    ],
+    "adjointFarFieldTMVar2": [
+        "value"
+    ],
+    "adjointFarFieldTMVar1": [
+        "value"
+    ],
+    "adjointOutletVelocityFlux": [
+        "value"
+    ],
+    "adjointOutletNuaTildaFlux": [
+        "value"
+    ],
+    "SRFFreestreamVelocity": [
+        "UInf",
+        "value"
+    ],
+    "timeVaryingMappedFixedValue": [
+        "offset",
+        "setAverage"
+    ],
+    "freeSurfacePressure": [
+        "pa"
+    ],
+    "freeSurfaceVelocity": [
+        "value"
+    ],
+    "atmNutkWallFunction": [
+        "boundNut",
+        "value",
+        "z0"
+    ],
+    "nutUBlendedWallFunction": [
+        "value"
+    ]
+}
