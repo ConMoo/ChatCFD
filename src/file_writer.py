@@ -8,10 +8,6 @@ from PyFoam.RunDictionary.ParsedParameterFile import ParsedParameterFile
 import json
 import re
 
-"""
-May be removed later
-"""
-
 def extract_content_in_brackets(text, indicator_string):
     # double brackets
     pattern = fr'{indicator_string} \[\[(.*?)\]\]'
