@@ -6,81 +6,57 @@ import tiktoken
 import json
 
 def estimate_tokens(text: str, model_name: str) -> int:
-    """Use tiktoken to estimate token count"""
+    """Estimate token count using tiktoken"""
     try:
         encoding = tiktoken.encoding_for_model(model_name)
     except KeyError:
-        # If model not recognized, default to cl100k_base (GPT-4 encoding)
+        # If model is not recognized, default to cl100k_base (GPT-4 encoding)
         encoding = tiktoken.get_encoding("cl100k_base")
     return len(encoding.encode(text))
 
 class GlobalLogManager:
     _instance = None
-    logs = []
+    current_session_stats = {
+        "deepseek-v3": {"calls": 0, "prompt_tokens": 0, "response_tokens": 0},
+        "deepseek-r1": {"calls": 0, "prompt_tokens": 0, "response_tokens": 0, "reasoning_tokens": 0}
+    }
     
-    def __new__(cls):
-        if cls._instance is None:
-            cls._instance = super().__new__(cls)
-        return cls._instance
-    
-    @classmethod
-    def _save_case_log(cls):
-        if config.case_log_write:
-            config.ensure_directory_exists(config.OUTPUT_PATH)
-            log_file_path = f'{config.OUTPUT_PATH}/all_qa_logs.json'
-            with open(log_file_path, 'w', encoding='utf-8') as f:
-                json.dump(cls.logs, f, ensure_ascii=False, indent=2)
-
     @classmethod
     def add_log(cls, log_entry):
-        cls.logs.append(log_entry)
-        cls._save_case_log()
+        # Only update statistics, do not save complete logs in memory
+        model_type = log_entry["model_type"]
+        if model_type in cls.current_session_stats:
+            stats = cls.current_session_stats[model_type]
+            stats["calls"] += 1
+            stats["prompt_tokens"] += log_entry.get("prompt_tokens", 0)
+            stats["response_tokens"] += log_entry.get("response_tokens", 0)
+            if model_type == "deepseek-r1":
+                stats["reasoning_tokens"] += log_entry.get("reasoning_tokens", 0)
+        
+        # Write directly to file, do not save in memory
+        if config.case_log_write:
+            cls._append_log_to_file(log_entry)
     
     @classmethod
-    def _generate_statistics(cls):
-        stats = {
-            "deepseek-v3": {
-                "total_calls": 0,
-                "total_prompt_tokens": 0,
-                "total_response_tokens": 0
-            },
-            "deepseek-r1": {
-                "total_calls": 0,
-                "total_prompt_tokens": 0,
-                "total_response_tokens": 0,
-                "total_reasoning_tokens": 0
-            }
-        }
+    def _append_log_to_file(cls, log_entry):
+        """Append log to file, avoid memory accumulation"""
+        config.ensure_directory_exists(config.OUTPUT_PATH)
+        log_file_path = f'{config.OUTPUT_PATH}/qa_logs.jsonl'  # Use JSONL format
         
-        for log in cls.logs:
-            model_type = log["model_type"]
-            if model_type == "deepseek-v3":
-                stats[model_type]["total_calls"] += 1
-                stats[model_type]["total_prompt_tokens"] += log["prompt_tokens"]
-                stats[model_type]["total_response_tokens"] += log["response_tokens"]
-            elif model_type == "deepseek-r1":
-                stats[model_type]["total_calls"] += 1
-                stats[model_type]["total_prompt_tokens"] += log["prompt_tokens"]
-                stats[model_type]["total_response_tokens"] += log["response_tokens"]
-                stats[model_type]["total_reasoning_tokens"] += log["reasoning_tokens"]
-        
-        return stats
+        with open(log_file_path, 'a', encoding='utf-8') as f:
+            f.write(json.dumps(log_entry, ensure_ascii=False, indent=2) + '\n')
     
     @classmethod
-    def save_logs(cls, log_file="all_qa_logs.json", stats_file=None):
-        # Save original logs
-        with open(log_file, 'w', encoding='utf-8') as f:
-            json.dump(cls.logs, f, ensure_ascii=False, indent=2)
-        
-        # Generate and save statistics
-        stats = cls._generate_statistics()
-        if not stats_file:
-            stats_file = log_file.replace(".json", "_stats.json")
-        
-        with open(stats_file, 'w', encoding='utf-8') as f:
-            json.dump(stats, f, ensure_ascii=False, indent=2)
-        
-        return log_file, stats_file
+    def get_session_stats(cls):
+        """Get current session statistics"""
+        return cls.current_session_stats.copy()
+    
+    @classmethod
+    def reset_session(cls):
+        """Reset session statistics"""
+        for model_stats in cls.current_session_stats.values():
+            for key in model_stats:
+                model_stats[key] = 0
 
 class BaseQA_deepseek_V3:
     def __init__(self):
@@ -160,25 +136,6 @@ class BaseQA_deepseek_R1:
         self.encoding = tiktoken.get_encoding("cl100k_base")
 
     def _setup_qa_interface(self):
-        # def get_response(messages):
-        #     client = OpenAI(
-        #         api_key=os.environ.get("DEEPSEEK_V3_KEY"), 
-        #         base_url=os.environ.get("DEEPSEEK_V3_BASE_URL")
-        #     )
-
-        #     chat_completion = client.chat.completions.create(
-        #         messages=messages,
-        #         model=os.environ.get("DEEPSEEK_R1_MODEL_NAME"),
-        #         temperature=config.R1_temperature,
-        #         stream=False
-        #     )
-            
-        #     return {
-        #         "reasoning_content": chat_completion.choices[0].message.model_extra['reasoning_content'],
-        #         "answer": chat_completion.choices[0].message.content,
-        #         "prompt_tokens": chat_completion.usage.prompt_tokens,
-        #         "completion_tokens": chat_completion.usage.completion_tokens
-        #     }
 
         def get_response(messages):
             client = OpenAI(
@@ -234,9 +191,12 @@ class BaseQA_deepseek_R1:
         pass
 
 class QA_Context_deepseek_R1(BaseQA_deepseek_R1):
-    def __init__(self):
+    def __init__(self, system_prompt=None):
         super().__init__()
-        self.conversation_history: list[dict[str, str]] = []
+        if system_prompt:
+            self.conversation_history = [{"role": "system", "content": system_prompt}]
+        else:
+            self.conversation_history: list[dict[str, str]] = []
 
     def ask(self, question: str):
         self.conversation_history.append({"role": "user", "content": question})
@@ -278,5 +238,3 @@ class QA_NoContext_deepseek_R1(BaseQA_deepseek_R1):
         })
         
         return result["answer"]
-    
-

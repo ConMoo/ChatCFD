@@ -11,5 +11,6 @@
     "OpenFOAM_path":"/usr/lib/openfoam/openfoam2406[path_to_OpenFOAM]",
     "OpenFOAM_tutorial_path":"[/home/fane/OpenFOAM/fane-v2406/tutorials[path_to_OpenFOAM_tutorial]",
     "max_running_test_round":30,
-    "pdf_chunk_d" : 1.5
+    "pdf_chunk_d" : 1.5,
+    "sentence_transformer_path": "[/path/to/sentence_transformer]"
 }

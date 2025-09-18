@@ -57,7 +57,7 @@ def convert_mesh(output_case_path=None, grid_path=None, grid_type=None):
         boundary_path = os.path.join(constant_path, "polyMesh/boundary")
         with open(boundary_path, "r", encoding="utf-8") as file:
             boundary_content = file.read()
-        config.boundary_init = boundary_content
+        config.grid_info.grid_boundary_init = boundary_content
 
         return True
     except subprocess.CalledProcessError as e:
@@ -273,6 +273,19 @@ Please strictly follow the requirements below for the output:
             print(f"Failed to modify controlDict: {e}")
             raise e
 
+def write_field_to_file(field_file_content, output_file_name):
+    # Escape processing (handle \n and special characters)
+    processed_content = field_file_content.encode('latin-1').decode('unicode_escape')
+
+    directory = os.path.dirname(output_file_name)
+
+    if directory and not os.path.exists(directory):
+        os.makedirs(directory)
+
+    # Write to file (recommended to use filename corresponding to object field)
+    with open(output_file_name, 'w', encoding='utf-8') as f:  # Filename should be based on object field, recommended to use "U"
+        f.write(processed_content)
+
 
 # Select file composition
 def case_required_files(solver=None, turbulence_model=None, other_physical_model=None, case_name=None):
@@ -339,7 +352,7 @@ def case_required_files(solver=None, turbulence_model=None, other_physical_model
                         else:
                             loose = 1
                     file_alternative[key.split("/")[-1]] = set(value['configuration_files'].keys())
-                    file_turbulence_model[key.split("/")[-1]] = value["turbulence_model"]  # 算例使用的湍流模型
+                    file_turbulence_model[key.split("/")[-1]] = value["turbulence_model"]
             loose += 1
     # print(file_turbulence_model)
 
@@ -355,7 +368,7 @@ def case_required_files(solver=None, turbulence_model=None, other_physical_model
             for key, value in config.OF_case_data_dict.items():
                 if domain_type == key.split('/')[0]:
                     file_alternative[key.split("/")[-1]] = set(value['configuration_files'].keys())
-                    file_turbulence_model[key.split("/")[-1]] = value["turbulence_model"]  # 算例使用的湍流模型
+                    file_turbulence_model[key.split("/")[-1]] = value["turbulence_model"]
 
     if file_turbulence_model != {}:
         # Process files caused by turbulence model differences

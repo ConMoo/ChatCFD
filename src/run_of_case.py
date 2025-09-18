@@ -1,12 +1,11 @@
-import os
 import subprocess
 from PyFoam.RunDictionary.ParsedParameterFile import ParsedParameterFile
-from PyFoam.Applications.Decomposer import Decomposer
-from PyFoam.Applications.Runner import Runner
-from PyFoam.Applications.PlotRunner import PlotRunner
-from PyFoam.Applications.PrepareCase import PrepareCase
 
 import config
+
+"""
+May be removed later
+"""
 
 def convert_mesh(case_path, grid_path):
     """Convert Fluent mesh to OpenFOAM format"""
@@ -138,6 +137,5 @@ def case_run(case_path):
         config.flag_case_success_run = True
         return "case run success."
 
-    a = 1
 
     # output_dir = Path(opts.output_dir.get_path())
