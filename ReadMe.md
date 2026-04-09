@@ -12,6 +12,9 @@ For ChatCFD's system architecture, performance benchmarks, and detailed technolo
 
   - [ChatCFD: An LLM-Driven Agent for End-to-End CFD Automation with Structured Knowledge and Reasoning](https://arxiv.org/abs/2506.02019v2)
 
+To support academic research and community development, we have open-sourced the ChatCFD test dataset on Hugging Face:
+
+  - 🤗 Dataset Repository: [ConMoo/ChatCFD_dataset](https://huggingface.co/datasets/ConMoo/ChatCFD_dataset/tree/main)
 
 ### Project Highlights
 
