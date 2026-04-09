@@ -1,5 +1,0 @@
-Employ the compressibleInterFoam solver to conduct a laminar simulation of a two-phase (liquid and air) viscoelastic fluid flow in a rod-climbing scenario. The system involves a rotating rod submerged in liquid, with gravity acting vertically downward. 
-
-Surface tension (σ = 0.0309 N/m) is included. The liquid phase uses a Maxwell viscoelastic model with kinematic viscosity νM = 0.01476 m²/s and relaxation time λ = 0.018225 s. Air is modeled as a Newtonian fluid. Initial conditions set liquid volume fraction to zero, velocity zero, pressure 1e5 Pa, and temperature 300 K throughout. The rotating rod boundary has a constant angular velocity of 2.1 revolutions per second around the y-axis. 
-
-Discretization uses Euler time schemes, linear gradient schemes, vanLeer for phase fraction advection, and upwind/linear for divergence terms. Linear corrected laplacian and corrected snGrad schemes are applied. Solver settings include PBiCGStab for velocity/temperature with DILU preconditioning, PCG with DIC for pressure, and MULES for phase fraction with 5 limiter iterations. The PIMPLE algorithm employs 1 outer and 2 pressure-velocity correctors.

@@ -1,9 +1,0 @@
-The case simulates a steady-state buoyant flow around a simplified car model with solar panels using the buoyantSimpleFoam solver. Laminar flow is specified, with radiation effects enabled via the solarLoad model. The setup employs the SIMPLE algorithm without momentum prediction.
-
-Discretization uses second-order schemes: Gauss linear for gradients, limited corrected Gauss linear for laplacians (0.333 coefficient), and bounded Gauss upwind for convection terms of U, h, k, epsilon, and turbulent energy. Linear interpolation is applied.
-
-Radiation modeling includes sun direction defined by coordinates (-1, 0.7, -1.5) with Fair Weather conditions (A=2229.78, B=0.142, C=0.058). Multi-band absorption/emission properties are assigned: solar panels and body bottom have absorptivity/emissivity (0.3, 0.7), while ref_wall uses (0.03, 0.07) with specular reflection. Reflected rays are enabled with 10 azimuthal and polar divisions.
-
-Thermophysical properties model air as a perfect gas: constant Cp=1006.43 J/kg/K, mu=1.846e-05 Pa·s, Pr=0.706. Gravity is (0, 0, -9.81) m/s².
-
-Initial conditions: uniform static pressure 101325 Pa, velocity (0.1, 0, 0) m/s, temperature 300 K, and p_rgh equals pressure. Key boundaries: fixedValue velocity and fixedFluxPressure for p_rgh on solar panels and ref_wall; pressureInletOutletVelocity at domain top (ZMax); zeroGradient temperature on solar panels, ref_wall, and domain bottom (ZMin); inletOutlet temperature elsewhere.

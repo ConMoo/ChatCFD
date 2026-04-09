@@ -1,5 +1,0 @@
-Conduct a 2-dimensional wedge-shaped domain simulation of compressible inviscid flow at Mach 5 using the rhoCentralFoam solver. The fluid is modeled as a perfect gas with constant properties, including zero dynamic viscosity and a specific heat capacity of 2.5 J/(kg·K). Initial conditions feature uniform static pressure (1 Pa), uniform temperature (1 K), and uniform velocity (5 m/s in the x-direction). 
-
-Boundary conditions include fixed pressure, temperature, and velocity at the inlet; zero-gradient conditions for pressure and temperature at the outlet with slip velocity on the obstacle; and symmetry planes for both top and bottom boundaries. The spatial discretization employs the Kurganov flux scheme with vanLeer reconstruction for density, velocity, and temperature. Gauss-linear gradients and corrected Gauss-linear laplacian schemes are applied. 
-
-Velocity and enthalpy equations are solved iteratively using a Gauss-Seidel smoother with two sweeps and tolerances of 1e-9 and 1e-10 respectively, while density, momentum, and energy equations use explicit diagonal solving. The laminar configuration is specified without turbulence modeling.

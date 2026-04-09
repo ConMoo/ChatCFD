@@ -1,7 +1,0 @@
-Utilizing the pimpleFoam solver in OpenFOAM, perform a 2D simulation of a contaminated droplet behavior under laminar flow conditions with surfactant transport. The flow is incompressible and involves dynamic mesh deformation for interface tracking. 
-
-The fluid properties are Newtonian with kinematic viscosity ν = 1e-6 m²/s, density ρ = 1000 kg/m³, and surface tension coefficient σ = 0.073 N/m. Gravity is disabled (g = (0 0 0)). Surfactant dynamics include bulk concentration 0.01 mol/m³, adsorption coefficient 400 m³/(mol·s), desorption coefficient 0.3 s⁻¹, and bulk/surface diffusion coefficients of 5e-6 m²/s at 293 K.
-
-Spatial discretization employs skew-corrected linear schemes for divergence terms (phi,U and phi,C), least squares for gradients, corrected Gauss linear for laplacians, and backward differencing for time integration. The PIMPLE algorithm is configured with 12 outer correctors and 3 momentum correctors, with consistent pressure-velocity coupling enabled. 
-
-Solution settings specify GAMG with Gauss-Seidel smoothing for pressure (tolerance 1e-8), smoothSolver with symmetric Gauss-Seidel for velocity and concentration fields (tolerance 1e-9), and no relaxation. Initial conditions set uniform zero values for pressure, velocity, and bulk/surface surfactant concentrations (C and Cs). The freeSurface boundary applies specialized conditions for pressure and velocity while the frontAndBack patches are empty due to 2D simplification. Mesh motion is governed by velocityLaplacian with diffusivity tracking interface deformation.

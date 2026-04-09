@@ -1,5 +1,0 @@
-This case simulates a laminar, incompressible flow within a 2D mixer vessel featuring a rotating impeller using pimpleFoam. The domain employs a dynamic mesh with topology change, modeling the impeller's solid-body rotation at 6.2832 rad/s around the z-axis via the AMI (Arbitrary Mesh Interface) technique to handle the sliding interface between rotating and stationary zones. The fluid is Newtonian with a constant kinematic viscosity of 1e-05 m²/s.  
-
-The PIMPLE algorithm is configured with 2 outer correctors and 1 pressure corrector. Spatial discretization uses Gauss linear schemes for gradients and laplacians, while the divergence term for velocity employs a linearUpwind scheme with Gauss integration. Solver settings include GAMG with DICGaussSeidel smoother for pressure correction, and smoothSolver with GaussSeidel smoother for velocity.  
-
-Initial conditions set velocity and pressure fields uniformly to zero. Boundary conditions utilize cyclicAMI for the AMI interfaces and movingWallVelocity for the rotor, stator, front, and back walls. Wall functions are applied for turbulence quantities (epsilon, k, nut), though the simulation is laminar.

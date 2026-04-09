@@ -1,8 +1,0 @@
-Employ the twoLiquidMixingFoam solver for a two-dimensional lock-exchange simulation involving immiscible Newtonian liquids: sludge and water. Both fluids are laminar with identical kinematic viscosities of 1e-06 m²/s, while sludge has a density of 1000 kg/m³ and water 990 kg/m³. The molecular diffusion coefficient is 1e-06 m²/s with interface compression factor 1. Gravity acts downward at 9.81 m/s². Initially, the entire domain contains water (alpha.sludge = 0) with zero velocity and zero relative pressure (p_rgh).
-
-Numerical schemes use Euler time integration, Gauss linear gradients, and corrected Laplacians. Momentum convection applies Gauss linear divergence, while phase fraction advection uses compressive Gauss vanLeer. PIMPLE algorithm executes pressure-velocity coupling with 1 outer corrector and 2 inner correctors, plus momentum prediction. Linear solvers include:  
-- GAMG with Gauss-Seidel smoothing for p_rgh (tolerance 1e-7, relTol 0.01)  
-- SmoothSolver with Gauss-Seidel for U (tolerance 1e-7, relTol 0.1)  
-- SmoothSolver for alpha.sludge with sub-cycling and tolerance 1e-9  
-
-Boundary conditions specify slip velocity and zero-gradient phase fraction on side walls, with fixedFluxPressure for p_rgh. Front/back boundaries are empty.

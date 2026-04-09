@@ -1,9 +1,0 @@
-A turbulent incompressible flow simulation is required for a T-junction with switching behavior using OpenFOAM's pimpleFoam solver. The case employs the k-epsilon turbulence model with Newtonian fluid properties having kinematic viscosity ν = 10⁻⁵ m²/s. The geometry features one inlet and two outlets.
-
-Pressure discretization uses the GAMG solver with tolerance 10⁻⁶ and relative tolerance 0.01. Velocity and turbulence variables (U, k, epsilon) utilize smoothSolver with symmetric Gauss-Seidel smoother at tolerance 10⁻⁵ and relative tolerance 0.1. The PISO-SIMPLE algorithm (PIMPLE) applies with 1 outer corrector and 2 corrector steps.
-
-Divergence schemes apply limitedLinearV (limiter=1) for momentum flux and limitedLinear for turbulence transport. Gradient and Laplacian terms use Gauss linear and Gauss linear corrected schemes respectively.
-
-Boundary conditions include uniform total pressure (p₀=40) with pressureInletOutletVelocity at the inlet, fixed pressure (p=10) at both outlets, and no-slip walls. Turbulence at inlet is defined by 5% intensity (k) and mixing length (0.01m) dissipation (epsilon). Wall functions handle turbulence near boundaries.
-
-The initial flow field assumes zero velocity and modified pressure throughout. Turbulence fields initialize uniformly with k=0.2 m²/s² and epsilon=200 m²/s³.

@@ -1,5 +1,0 @@
-Weir overflow simulation using interIsoFoam solver for two-phase flow (water and air) with k-epsilon turbulence modeling. The case involves gravity-driven water flow over a weir structure. Water properties: density 1000 kg/m³, viscosity 1e-06 m²/s. Air properties: density 1 kg/m³, viscosity 1.48e-05 m²/s. Surface tension coefficient is 0.07 N/m.
-
-Discretization uses Euler scheme for time derivatives, Gauss linear for gradients, and upwind schemes for divergence terms of turbulence quantities. Pressure-velocity coupling employs PIMPLE algorithm with 3 correctors without momentum prediction. Interface capturing uses isoAlpha reconstruction with clipping enabled.
-
-Boundary conditions include variableHeightFlowRate at inlet, noSlip at lower wall, and totalPressure at atmosphere boundary. Turbulence quantities use wall functions at lower boundaries. Initial conditions set water volume fraction and velocity fields to zero throughout the domain.

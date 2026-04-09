@@ -1,9 +1,0 @@
-This simulation employs the rhoPimpleFoam solver to model turbulent liquid flow through a 90-degree square bend geometry. The working fluid is water, defined in thermophysicalProperties. The k-epsilon RANS model is used for turbulence closure.
-
-The finite volume discretization uses Euler time stepping. Gradients are calculated using the Gauss linear scheme with a cellLimited linear limiter. Divergence terms are handled primarily with the linearUpwind scheme, also utilizing the same limiter. Laplacian terms employ Gauss linear corrected schemes.
-
-The pressure field is solved using the GAMG solver with GaussSeidel smoother. Velocity, turbulent kinetic energy (k), dissipation rate (epsilon), and internal energy are solved using the PBiCGStab solver with DILU preconditioner. All solvers use absolute tolerance settings (relTol 0) of 1e-7.
-
-The PIMPLE algorithm performs 3 pressure-velocity correction iterations per timestep. Under-relaxation is not applied to the equations. Initial conditions set uniform pressure (1e5 Pa), temperature (300 K), and zero velocity throughout the domain. Turbulence quantities have an initial uniform k value of 1 m²/s² and epsilon of 200 m²/s³.
-
-Boundary conditions include: an inlet with fixed mass flow rate (5 kg/s), turbulent intensity (5% for k), mixing length specification (0.005 m for epsilon), and fixed water temperature; outlet boundaries with fixed static pressure; walls with no-slip velocity, fixed temperature of 350 K, and wall functions for k, epsilon, and turbulent viscosity (nut). Wall turbulence functions incorporate standard values for Cmu (0.09), kappa (0.41), and E (9.8).

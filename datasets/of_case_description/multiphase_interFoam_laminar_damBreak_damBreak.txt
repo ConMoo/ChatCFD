@@ -1,7 +1,0 @@
-Employ the interFoam solver to conduct a 2-dimensional dam-break flow simulation under laminar conditions. The simulation involves two immiscible, Newtonian phases: water with kinematic viscosity 1e-06 m²/s and density 1000 kg/m³, and air with kinematic viscosity 1.48e-05 m²/s and density 1 kg/m³. The surface tension coefficient is 0.07 N/m. Gravity acts downwards at -9.81 m/s² in the y-direction.
-
-Initially, the entire domain contains air (alpha.water = 0). Initial velocity is zero everywhere, and initial modified pressure p_rgh is uniformly zero. Boundary conditions use no-slip walls and an atmosphere boundary with inletOutlet for alpha.water and totalPressure for p_rgh.
-
-For discretization, the time derivative uses Euler scheme. Gradients use Gauss linear. The divergence term for the phase fraction (div(phi,alpha)) uses the vanLeer scheme, while divergence for momentum (div(rhoPhi,U)) uses Gauss linearUpwind grad(U). Laplacian terms use Gauss linear corrected with snGrad corrected.
-
-Solution settings apply the MULES method for the phase fraction "alpha.water", with 2 corrections, 1 sub-cycle, and 5 limiter iterations. Pressure p_rgh is solved with the PCG solver and DIC preconditioner, tolerances of 1e-07, and relaxation factors of 1 for equations. Velocity U uses the smoothSolver with symGaussSeidel smoother. The PIMPLE algorithm uses 1 outer correction and 3 pressure-velocity corrections, without momentum prediction.

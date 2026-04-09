@@ -1,7 +1,0 @@
-Employ the interPhaseChangeFoam solver to simulate laminar cavitating flow around a bullet-shaped body with SchnerrSauer phase change modeling. The fluid system comprises water and vapor phases. Water has Newtonian properties with kinematic viscosity 9e-07 m²/s and density 1000 kg/m³, while vapor has kinematic viscosity 4.273e-04 m²/s and density 0.02308 kg/m³. Saturation pressure is set to 2300 Pa, and surface tension coefficient is 0.07 N/m. SchnerrSauer model parameters include nuclei concentration 1.6e+13 m⁻³ and nucleation site diameter 2.0e-06 m.
-
-The simulation utilizes the Euler scheme for temporal discretization. For spatial terms: alpha (volume fraction) employs the vanLeer divergence scheme, velocity uses Gauss linearUpwind, and pressure uses limited corrected schemes. Gravity is defined as (0, -9.81, 0) m/s².
-
-Solver configurations include: PIMPLE algorithm with momentum predictor disabled, 1 outer corrector, and 3 pressure correctors. The alpha.water field uses MULES correction with smoothSolver and 5 limiter iterations. Pressure field (p_rgh) employs GAMG solver with DICGaussSeidel smoother and relative tolerance 0.1. Velocity solves with smoothSolver symGaussSeidel and tolerance 1e-6.
-
-Initial conditions: alpha.water is uniformly 1 (pure liquid phase), velocity is uniformly (0, 0, 20) m/s, p_rgh is uniformly 100000 Pa. Boundaries include symmetry walls, no-slip bullet surface, fixedValue alpha.water at inlet, and pressureInletOutletVelocity at outlet.

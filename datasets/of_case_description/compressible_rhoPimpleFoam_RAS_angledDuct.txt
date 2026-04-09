@@ -1,7 +1,0 @@
-Simulating compressible turbulent flow in an angled duct using the rhoPimpleFoam solver with the k-epsilon turbulence model. The duct geometry includes a porous region with directional permeability modeled via an explicit Darcy-Forchheimer source term oriented along a 45-degree axis. The fluid is air, treated as a perfect gas with constant specific heat and Sutherland viscosity model.
-
-Discretization employs first-order Euler time scheme, Gauss linear gradients, and corrected surface-normal gradients. Divergence schemes use upwind for momentum and energy transport terms while applying linear schemes for diffusion. The k-epsilon terms apply upwind convection.
-
-Pressure-velocity coupling uses the PIMPLE algorithm with 50 outer correctors and under-relaxation. Pressure solutions use PCG with DIC preconditioning, while momentum/turbulence equations use smoothSolver with symGaussSeidel. Convergence monitoring enforces strict residuals for velocity and turbulence fields.
-
-Initial fields show quiescent flow. Inflow boundary imposes constant mass flux with 5% turbulence intensity and mixing-length dissipation. Wall boundaries use no-slip condition except for the porous interface (slip condition) and turbulence wall functions. Outflow maintains fixed pressure with zero-gradient backscatter handling. Thermal boundaries apply fixed inlet temperature and zero-gradient walls.

@@ -1,8 +1,0 @@
-This is a laminar dam break simulation using the interMixingFoam solver, modeling the interaction of three Newtonian fluid phases: air, water, and an additional "other" fluid.
-Key fluid properties are:
-- Air: Density = 1 kg/m³, Kinematic viscosity = 1.48e-05 m²/s
-- Water: Density = 1000 kg/m³, Kinematic viscosity = 1e-06 m²/s
-- Other fluid: Density = 1010 kg/m³, Kinematic viscosity = 1e-06 m²/s
-Surface tension coefficients are 0.05 N/m between air/water and 0.04 N/m between air/other fluid. Gravity is applied downward with a magnitude of 9.81 m/s². The turbulence model is explicitly set to laminar.
-Initial conditions define air with volume fraction alpha.air = 1 in the atmosphere region, while alpha.water and alpha.other are uniformly zero. Velocity is initially zero everywhere, and the modified pressure p_rgh is also initially zero. Boundary conditions enforce no-slip velocity and fixedFluxPressure on walls, with inletOutlet boundary conditions for phase fractions at the atmosphere boundary.
-Solution settings use the Euler scheme for time derivatives, Gauss limitedLinearV for momentum convection, and the vanLeer scheme for phase fraction advection. The PIMPLE algorithm employs 3 pressure correction iterations without non-orthogonal correction, with Gauss-Seidel/SymGauss-Seidel smoothers employed for velocity and phase fraction fields. The PCG solver with DIC preconditioning is used for pressure equations with specified tolerances.

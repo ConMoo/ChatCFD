@@ -1,7 +1,0 @@
-Employ the interFoam solver for simulating the flow around a motorbike, modeling two-phase (water and air) incompressible flow with the kOmegaSST turbulence model. Both phases are Newtonian fluids: water has a kinematic viscosity (nu) of 1e-06 m²/s and density (rho) of 1000 kg/m³; air has nu = 1.48e-05 m²/s and rho = 1 kg/m³. Surface tension coefficient is 0.07 N/m. Gravity is set to (0, 0, -9.81) m/s².
-
-Initial conditions: The volume fraction of water (alpha.water) is 0 (domain filled with air). Velocity (U) and modified pressure (p_rgh) fields are uniformly zero. Turbulent kinetic energy (k) is 0.00015 m²/s², specific dissipation rate (omega) is 2 s⁻¹, and turbulent viscosity (nut) is 5e-07 m²/s.
-
-Discretization uses Gauss linear scheme for gradients. Divergence schemes: upwind for momentum, vanLeer for phase fraction. Laplacian terms use Gauss linear limited corrected. Time derivatives apply Euler scheme. Wall distance is computed via meshWave.
-
-Solver settings: PIMPLE algorithm with 1 outer corrector, 3 momentum correctors, and 1 non-orthogonal corrector. Momentum predictor is active. Pressure (p_rgh) solves via GAMG with DIC smoother; velocity and turbulence fields use smoothSolver. Turbulent fields (k, omega) and alpha.water use tolerance 1e-8. Dynamic mesh refinement adapts cells based on alpha.water, targeting levels between 0.001 and 0.999 with max refinement level 4.

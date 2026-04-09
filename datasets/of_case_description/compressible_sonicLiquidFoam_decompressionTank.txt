@@ -1,7 +1,0 @@
-This case simulates the decompression of a pressurized liquid-filled tank using the sonicLiquidFoam solver, a compressible liquid flow solver suitable for acoustic effects. The model assumes laminar flow without turbulence modeling. The domain is configured with symmetry about an axis and includes a nozzle outlet.
-
-Key physical properties define water-like liquid behavior: density rho0 = 1000 kg/m³, reference pressure p0 = 100000 Pa, compressibility psi = 4.54e-07 Pa⁻¹, and dynamic viscosity mu = 0.001 Pa·s. Initially, the fluid is at rest with zero velocity and uniform high pressure of 10 MPa throughout the tank.
-
-Boundary conditions include: fixed pressure of 0 Pa at the nozzle outlet (simulating atmospheric condition), a symmetry plane along the axis, no-slip condition on the outer tank wall, and empty boundaries indicating a 2D axisymmetric setup.
-
-Discretization employs: Euler scheme for time derivatives, Gauss linear corrected for Laplacian terms, limited linear schemes with a coefficient of 1 for momentum (div(phi,U)) and pressure (div(phid,p)) divergence terms. Solution settings use the PIMPLE algorithm with 2 outer correctors and 1 pressure corrector. Solvers include smoothSolver/symGaussSeidel for pressure (tolerance 1e-06) and velocity fields (tolerance 1e-05), and PCG/DIC for density (tolerance 1e-05). All solances use relative tolerance 0 (absolute control).

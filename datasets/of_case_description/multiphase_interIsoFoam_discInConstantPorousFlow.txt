@@ -1,5 +1,0 @@
-Simulating laminar two-phase flow through a porous medium using the interIsoFoam solver for the discInConstantPorousFlow case. The fluid system comprises two Newtonian phases: water with density 1000 kg/m³ and air with density 1 kg/m³, both having kinematic viscosity set to zero and zero surface tension. Gravity acts vertically downward with a magnitude of 9.81 m/s².
-
-Flow occurs within a porous domain where porosity effects are activated. Initial conditions include a uniform velocity field set to (1, 0, 0.5) m/s throughout the domain, zero initial modified pressure (p_rgh), and zero initial water volume fraction (alpha.water).
-
-Discretization employs Euler scheme for time derivatives. Spatial gradients use Gauss linear scheme, momentum convection uses limitedLinearV(1), and laplacian terms apply Gauss linear corrected with corrected snGrad schemes. Interface capturing utilizes plicRDF reconstruction with strict tolerances (isoFaceTol 1e⁻⁸, surfCellTol 1e⁻⁸). Solution settings disable momentum prediction and run in frozenFlow mode. PISO corrections remain inactive under the PIMPLE framework.

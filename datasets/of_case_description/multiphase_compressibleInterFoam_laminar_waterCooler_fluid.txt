@@ -1,9 +1,0 @@
-The simulation employs the compressibleInterFoam solver to model a laminar two-phase flow involving water and air, specifically designed for a water cooler system configuration. This case examines multiphase interactions with gravity and surface tension effects, where water and air are treated as compressible fluids governed by distinct thermophysical properties.  
-
-For water, the equation of state is perfectFluid with a reference density of 1027 kg/m³ and a gas constant of 3000 J/kg·K. Specific heat capacity is 4195 J/kg·K, and dynamic viscosity is set to 3.645e-4 Pa·s. Air uses a perfectGas equation of state with a molecular weight of 28.9 g/mol, specific heat capacity of 1007 J/kg·K, and viscosity of 1.84e-5 Pa·s. Surface tension between phases is 0.07 N/m, and gravitational acceleration is -9.81 m/s² in the vertical direction. Initial conditions include uniform pressure (1e5 Pa), zero velocity, temperature at 300 K, and an air-filled domain (alpha.water = 0).  
-
-Boundary conditions enforce no-slip velocity at walls, fixedFluxPressure for modified pressure (p_rgh), and a thermally coupled boundary for temperature at the cooler base. Discretization utilizes Euler time schemes, Gauss linear gradients, and divergence schemes with vanLeer for phase fraction and upwind for momentum/energy terms. Laplacian and snGrad schemes are uncorrected, with linear interpolation.  
-
-Solution algorithms apply PIMPLE with 1 outer and 2 pressure correctors. Solver settings include smoothSolver with Gauss-Seidel for velocity (tolerance 1e-06) and GAMG for pressure (tolerance 1e-07, relTol 0.01). The alpha.water field uses 2 sub-cycles and 5 limiter iterations for interface sharpness.  
-
-The requirement is to simulate this laminar multiphase flow in a water cooler, resolving phase interactions, thermal coupling, and gravity-driven effects using the specified numerical schemes and solver configurations.

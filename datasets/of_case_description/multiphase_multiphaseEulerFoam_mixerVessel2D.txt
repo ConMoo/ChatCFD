@@ -1,7 +1,0 @@
-This simulation models a 2D four-phase fluid mixing process within a vessel using the `multiphaseEulerFoam` solver. It involves water, oil, mercury, and air phases. Initial volume fractions for each phase are set uniformly to 0.25 across the domain. Velocity and pressure fields are initialized to zero.
-
-Gravity is absent. The rotor zone spins at a constant angular velocity around the z-axis via the Multiple Reference Frame (MRF) model. Laminar flow is assumed.
-
-For the discretization: Euler scheme is used for time derivatives. Gradients employ Gauss linear interpolation. Van Leer scheme is used for divergence terms involving phase fractions (`div(phi,alpha.*)`, `div(phir,alpha.*,alpha.*)`), and the limitedLinearV scheme (with coefficient 1) is used for velocity divergences (`div(alphaPhi.*,U.*)`, `div(phi.*,U.*)`). Laplacian terms use Gauss linear corrected, while snGrad uses the corrected scheme.
-
-Solution settings include: 1 PIMPLE outer corrector and 3 pressure correctors with no non-orthogonal correction. Solver tolerances are specified: GAMG for `p_rgh` (relTol 0.01, tolerance 1e-7), PCG for `p_rghFinal` (tolerance 1e-7), and smoothSolver (GaussSeidel sweeper) for velocities `U` (relTol 0.1, tolerance 1e-8). Phase fraction equations use 2 sub-cycles. Drag forces between phases utilize a blended SchillerNaumann model with residual parameters. Boundary conditions enforce no-slip on the rotating rotor and stationary stator walls for velocity, zero pressure gradient, and zero slip pressure condition. Front and back boundaries are empty.

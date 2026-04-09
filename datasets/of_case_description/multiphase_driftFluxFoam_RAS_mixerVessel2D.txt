@@ -1,9 +1,0 @@
-This simulation models a 2D multiphase flow within a mixing vessel using the `driftFluxFoam` solver. The fluids involved are sludge and water. Sludge is modeled as a non-Newtonian Bingham plastic fluid with specific rheological coefficients (BinghamCoeff 0.0005966, BinghamExponent 1050.8) and a density of 1996 kg/m³. Water is Newtonian with kinematic viscosity 1.7871e-06 m²/s and density 996 kg/m³. A simple relative velocity model defines slip between the phases. Gravity is active (-9.81 m/s² in Y-direction).
-
-Turbulence is simulated using the RAS `buoyantKEpsilon` model with a buoyancy coefficient `Cg` set to 0.85. Multiple Reference Frame (MRF) forces are applied to cellZone 'rotor', rotating about the Z-axis at an angular velocity of 6.283 rad/s.
-
-Initial conditions: Uniform volume fraction of sludge (`alpha.sludge`) is 0.001; initial velocity (`U`), turbulent kinetic energy (`k`), turbulent dissipation rate (`epsilon`), eddy viscosity (`nut`), and modified pressure (`p_rgh`) are uniformly zero. `k` and `epsilon` use wall functions (`kqRWallFunction`, `epsilonWallFunction`) with standard constants (Cmu 0.09, kappa 0.41, E 9.8).
-
-Discretization schemes: `ddtSchemes` use Euler; `gradSchemes` use linear Gauss; `divSchemes` use vanLeer for phase fraction div(phi,alpha), limitedLinear for turbulence scalars, and linearUpwind for div(rhoPhi,U); `laplacianSchemes` use linear Gauss corrected.
-
-Solution (`fvSolution`): The PIMPLE algorithm uses 3 correction steps with no momentum predictor. Solvers include smoothSolver with symGaussSeidel smoother for alpha fields (MULES correction enabled with 3 limiter iterations); GAMG with GaussSeidel smoother for pressure `p_rgh`; PBiCGStab with DILU preconditioner for `U`, `k`, and `epsilon`.

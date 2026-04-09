@@ -1,9 +1,0 @@
-This simulation models a bubble column using the OpenFOAM solver twoPhaseEulerFoam. It captures the interaction between air bubbles rising through water under gravity. Key aspects include:
-
-The model employs a RAS turbulence approach with the mixtureKEpsilon model for both phases. Thermophysical properties define water as an incompressible perfect fluid (density 1027 kg/m³, viscosity 3.645e-4 Pa·s) and air as a perfect gas (dynamic viscosity 1.84e-05 Pa·s). Gravity acts vertically downward (-y direction) at 9.81 m/s².
-
-Interphase momentum exchange is modeled via Schiller-Naumann drag laws for dispersed phases and segregated drag for mixtures, with constant virtual mass coefficients (Cvm=0.5). Bubble diameters are prescribed: air bubbles expand isothermally from 3mm at 1bar, while water droplets maintain 0.1mm diameter. Linear blending limits phase dispersion to maximum 30% fully dispersed and 50% partly dispersed.
-
-Discretization uses Euler time scheme, Gauss linear gradients, and limited linear divergence schemes for momentum/energy. The vanLeer scheme resolves phase fraction advection. Solvers include GAMG with DIC smoother for pressure (tolerance 1e-8), and smoothSolver with symGaussSeidel for velocity/turbulence variables (tolerance 1e-7). PIMPLE coupling uses 3 outer and 1 inner corrections.
-
-Initial conditions set air volume fraction to 0 (except inlet: 0.5), vertical air velocity to 0.1 m/s, and water stationary. Temperatures start at 300K (air) and 350K (water). Turbulence fields initialize at k=3.75e-5 m²/s² and ε=1.5e-4 m²/s³. Boundaries enforce fixedValue at inlets, inletOutlet at outlets, and zeroGradient/wall functions on walls.

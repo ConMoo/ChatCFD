@@ -1,9 +1,0 @@
-Simulate a multiphase turbulent flow using the OpenFOAM solver `driftFluxFoam` with the `RAS/dahl` case. The fluid system comprises two phases: a non-Newtonian Bingham plastic 'sludge' phase and a Newtonian 'water' phase. A constant gravitational acceleration of 9.81 m/s² acts downwards in the y-direction. 
-
-The sludge exhibits Bingham plastic rheology with specific viscosity model coefficients. The water phase has kinematic viscosity ν = 1.7871e-06 m²/s. A simple relative velocity model defines interphase slip with drift velocity parameters. The buoyancy-modified k-epsilon (`buoyantKEpsilon`) turbulence model is employed, with model constant Cg = 0.85.
-
-Initial conditions are uniform: sludge volume fraction α.sludge = 0.001; velocity U = (0.0191, 0, 0) m/s; modified pressure p_rgh = 0 Pa; turbulent kinetic energy k = 0.00015 m²/s²; turbulence dissipation rate ε = 1.50919e-06 m²/s³; eddy viscosity nut = 0 m²/s.
-
-Boundary conditions include a fixed inlet velocity and sludge fraction with fixedFluxPressure for p_rgh, pressureInletOutletVelocity outlet, no-slip walls using k-epsilon wall functions for U, k, ε, and nut, a slip condition at the top wall, and an empty boundary for the front/back.
-
-The solution procedure applies the PIMPLE algorithm for pressure-velocity coupling with 3 momentum correction steps and no non-orthogonal corrections. Solver settings include GAMG for pressure and PBiCGStab for U/k/ε, employing relaxation and specific discretization schemes. Divergence terms for α.sludge use the vanLeer scheme. MULES (Multidimensional Universal Limiter with Explicit Solution) is used with 2 alpha correctors and 3 limiter iterations for phase fraction advection. Gradient, Laplacian, and interpolation schemes default to Gauss linear, Gauss linear corrected, and linear, respectively.

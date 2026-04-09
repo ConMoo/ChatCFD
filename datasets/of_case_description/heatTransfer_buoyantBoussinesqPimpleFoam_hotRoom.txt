@@ -1,5 +1,0 @@
-Simulating natural convection in a heated room using buoyantBoussinesqPimpleFoam with the k-epsilon turbulence model. The flow is incompressible and transient, leveraging the Boussinesq approximation for buoyancy effects. Initial fields feature uniform zero velocity, 300 K temperature, and zero modified pressure. Key boundary conditions include no-slip walls, fixed temperatures at floor/ceiling, and buoyancy-adjusted pressure (p_rgh) boundaries. Gravity acts vertically downward at -9.81 m/s².
-
-Numerical schemes utilize Euler temporal discretization, Gauss linear gradients, and predominantly upwind divergence for momentum/energy equations. Turbulence scalars apply first-order upwind schemes. Pressure solves with PCG/DIC, while velocity/turbulence fields use PBiCGStab/DILU solvers with relative tolerances of 0.1 (1e-6 absolute). PIMPLE algorithm runs 1 outer iteration and 2 pressure corrections without relaxation.
-
-Material properties include Newtonian fluid with ν = 1e-05 m²/s, thermal expansion β = 3e-03 K⁻¹, T_ref = 300 K, and Prandtl numbers Pr = 0.7, Prₜ = 0.85. Turbulence initializes with k = 0.1 m²/s² and ε = 0.01 m²/s³.

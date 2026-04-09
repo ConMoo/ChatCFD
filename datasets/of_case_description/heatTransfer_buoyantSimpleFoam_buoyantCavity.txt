@@ -1,9 +1,0 @@
-The buoyantCavity case simulates buoyancy-driven flow within an enclosed cavity under steady-state conditions using the buoyantSimpleFoam solver. Gravity acts downward with a magnitude of 9.81 m/s². Thermal buoyancy forces arise due to differentially heated vertical walls: one maintained at 307.75 K (hot) and the opposite at 288.15 K (cold), while top/bottom/front/back walls are adiabatic. All walls enforce a no-slip velocity condition. Turbulence is modeled using the k-Omega SST closure.
-
-The thermophysical model employs a perfect gas equation of state with constant properties: molar mass 28.96 g/mol, dynamic viscosity 1.831e-05 Pa·s, Prandtl number 0.705, and specific heat capacity 1004.4 J/kg·K.
-
-Discretization uses a steady-state formulation for time derivatives (ddtScheme: steadyState). Gradients use Gauss linear schemes. Divergence schemes for momentum (phi,U), energy (phi,h), and turbulence variables (phi,k, phi,epsilon, phi,omega) apply bounded Gauss limitedLinear with a flux limiter coefficient of 0.2. Laplacian and surface normal gradients use orthogonal corrections. Wall distance calculation uses the meshWave method.
-
-Solution algorithms utilize the SIMPLE approach without momentum prediction and with zero non-orthogonal corrections. Solver settings are: pressure (p_rgh) employs GAMG with DICGaussSeidel smoothing, tolerance 1e-7; velocity (U), enthalpy (h), and turbulence scalars (k, epsilon, omega) use PBiCGStab with DILU preconditioning, tolerance 1e-8. Relaxation factors are: pressure 0.7, velocity and enthalpy 0.3, turbulence fields 0.7. Residual convergence targets are: p_rgh, U, h at 1e-4; k, epsilon, omega at 1e-3.
-
-Initial conditions are: pressure (p, p_rgh) uniform at 1e5 Pa; velocity zero everywhere; temperature 293 K; turbulence fields initialized as k=3.75e-4 m²/s², epsilon=4e-6 m²/s³, omega=0.12 s⁻¹; turbulent viscosity and thermal diffusivity fields (nut, alphat) start as zero with wall function boundaries.
