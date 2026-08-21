@@ -1,3 +1,5 @@
+
+
 # ChatCFD: An LLM-Driven Agent for End-to-End CFD Automation with Structured Knowledge and Reasoning
 
 ## ✨ Quick Introduction
@@ -49,7 +51,7 @@ This enables users who lack extensive CFD domain expertise to perform CFD simula
     - [Project Highlights](#project-highlights)
     - [Key Function](#key-function-one-click-from-natural-language-short-sentences-papers-technical-manuals-etc-to-simulation)
   - [Table of Contents](#-table-of-contents)
-  - [System Requirements](#️-system-requirements)
+  - [System Requirements](#️- system-requirements)
       - [Core Dependencies](#core-dependencies)
       - [Python Dependencies Overview](#python-dependencies-overview)
   - [Installation](#-installation-guide)
@@ -186,7 +188,7 @@ Manual download link: https://develop.openfoam.com/Development/openfoam/-/wikis/
 ### Step 6. Set up Configuration File
 Edit the configuration file `inputs/chatcfd_config.json`, replacing the placeholder `[[[...]]]` for API keys and URLs.
 
-If you installed OpenFOAM according to Step 4, `OpenFOAM_path` and `OpenFOAM_tutorial_path` usually do not need modification. If the model download in Step 5 failed and you downloaded the model manually, you will need to set `sentence_transformer_path`.
+If you installed OpenFOAM according to Step 5, `OpenFOAM_path` and `OpenFOAM_tutorial_path` usually do not need modification. If the model download in Step 4 failed and you downloaded the model manually, you will need to set `sentence_transformer_path`.
 
 ```JSON
 {
